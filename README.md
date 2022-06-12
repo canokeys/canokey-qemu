@@ -16,7 +16,3 @@ cmake .. -DCMAKE_INSTALL_PREFIX=${YOUR_PREFIX}
 make -j`nproc`
 make install
 ```
-
-## Known deficiency
-
-* Hang if there is communication on interrupt endpoints (i.e. FIDO) when using `qemu-xhci`. The workaround is to use old `-usb`
