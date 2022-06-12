@@ -17,4 +17,8 @@ void canokey_emu_setup(int request, int value, int index, int length);
 void canokey_emu_data_out(uint8_t ep, uint8_t *data);
 void canokey_emu_data_in(uint8_t ep);
 
+#define CANOKEY_EMU_EP_WEBUSB  0
+#define CANOKEY_EMU_EP_CTAPHID 1
+#define CANOKEY_EMU_EP_CCID    2
+
 #endif /* CANOKEY_QEMU_H */

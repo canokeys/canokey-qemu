@@ -59,20 +59,19 @@ uint32_t USBD_LL_GetRxDataSize(USBD_HandleTypeDef *pdev, uint8_t ep_addr) { retu
 /* Override the function defined in usb_device.c */
 void usb_resources_alloc(void) {
   uint8_t iface = 0;
-  uint8_t ep = 1;
 
   // 0xFF for disable
   // doc: interfaces/USB/device/usb_device.h
   memset(&IFACE_TABLE, 0xFF, sizeof(IFACE_TABLE));
   memset(&EP_TABLE, 0xFF, sizeof(EP_TABLE));
 
-  EP_TABLE.ctap_hid = ep++;
+  EP_TABLE.ctap_hid = CANOKEY_EMU_EP_CTAPHID;
   IFACE_TABLE.ctap_hid = iface++;
   EP_SIZE_TABLE.ctap_hid = 64;
 
   IFACE_TABLE.webusb = iface++;
 
-  EP_TABLE.ccid = ep++;
+  EP_TABLE.ccid = CANOKEY_EMU_EP_CCID;
   IFACE_TABLE.ccid = iface++;
   EP_SIZE_TABLE.ccid = 64;
 
