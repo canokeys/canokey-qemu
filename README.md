@@ -16,3 +16,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX=${YOUR_PREFIX}
 make -j`nproc`
 make install
 ```
+
+## Doc
+
+See <https://www.qemu.org/docs/master/system/devices/canokey.html>
