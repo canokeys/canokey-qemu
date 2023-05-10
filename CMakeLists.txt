@@ -24,13 +24,16 @@ set(LIBCANOKEY_QEMU_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 file(GLOB_RECURSE SRC Src/*.c)
 
 if(${APPLE})
-	add_library(canokey-qemu STATIC ${SRC}
-else()
-	add_library(canokey-qemu SHARED ${SRC}
-endif()
+	add_library(canokey-qemu STATIC ${SRC} 
         canokey-core/virt-card/device-sim.c
         canokey-core/virt-card/fabrication.c
         canokey-core/littlefs/bd/lfs_filebd.c)
+else()
+	add_library(canokey-qemu SHARED ${SRC}
+        canokey-core/virt-card/device-sim.c
+        canokey-core/virt-card/fabrication.c
+        canokey-core/littlefs/bd/lfs_filebd.c)
+endif()
 set_target_properties(canokey-qemu PROPERTIES PUBLIC_HEADER Inc/canokey-qemu.h)
 set_target_properties(canokey-qemu PROPERTIES SOVERSION ${LIBCANOKEY_QEMU_SO_VERSION})
 target_include_directories(canokey-qemu SYSTEM PRIVATE Inc canokey-core/virt-card canokey-core)
