@@ -24,6 +24,7 @@ if(${APPLE})
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-but-set-variable -Wno-unused-but-set-parameter")
 endif()
 ```
+When building QEMU with the `--enable-canokey` option add the additional option to point to the static library: `--extra-ldflags='-L/usr/local/lib -lcanokey-qemu'`.  Note: if your libraries from `make install` for canokey-qemu went into a directory other than `/usr/local/lib` update the `--extra-ldflags` path as needed.
 
 ## Doc
 
