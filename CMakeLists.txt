@@ -23,7 +23,11 @@ set(LIBCANOKEY_QEMU_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 
 file(GLOB_RECURSE SRC Src/*.c)
 
-add_library(canokey-qemu SHARED ${SRC}
+if(${APPLE})
+	add_library(canokey-qemu STATIC ${SRC}
+else()
+	add_library(canokey-qemu SHARED ${SRC}
+endif()
         canokey-core/virt-card/device-sim.c
         canokey-core/virt-card/fabrication.c
         canokey-core/littlefs/bd/lfs_filebd.c)
@@ -36,6 +40,19 @@ add_dependencies(canokey-qemu gitrev)
 install(TARGETS canokey-qemu LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-configure_file(canokey-qemu.pc.in canokey-qemu.pc @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/canokey-qemu.pc
-        DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig)
+if(${APPLE})
+	configure_file(canokey-qemu_mac.pc.in canokey-qemu.pc @ONLY)
+	install(FILES ${CMAKE_BINARY_DIR}/canokey-core/canokey-crypto/libcanokey-crypto.a
+		DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+	install(FILES ${CMAKE_BINARY_DIR}/canokey-core/canokey-crypto/patched/mbedtls/library/libmbedcrypto.a
+		DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+	install(FILES ${CMAKE_BINARY_DIR}/canokey-core/libcanokey-core.a 
+		DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+	install(FILES ${CMAKE_BINARY_DIR}/canokey-qemu.pc
+        	DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig)
+else()
+	configure_file(canokey-qemu.pc.in canokey-qemu.pc @ONLY)
+	install(FILES ${CMAKE_BINARY_DIR}/canokey-qemu.pc
+        	DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig)
+endif()
+
