@@ -17,6 +17,14 @@ make -j`nproc`
 make install
 ```
 
+## Install (Mac)
+Add the following to the very top of the file `canokey-core/canokey-crypto/mbedtls/library/CMakeLists.txt`:
+```
+if(${APPLE})
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-but-set-variable -Wno-unused-but-set-parameter")
+endif()
+```
+
 ## Doc
 
 See <https://www.qemu.org/docs/master/system/devices/canokey.html>
