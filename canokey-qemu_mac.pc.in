@@ -5,5 +5,5 @@ includedir=@LIBCANOKEY_QEMU_INCLUDEDIR@
 Name: libcanokey-qemu
 Description: CanoKey lib for QEMU
 Version: @LIBCANOKEY_QEMU_SO_VERSION@
-Libs: -L${libdir} -lcanokey-qemu 
+Libs: -L${libdir} -lcanokey-qemu -lcanokey-crypto -l:libmbedcrypto.a -lcanokey-core
 Cflags: -I${includedir}
