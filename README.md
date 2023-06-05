@@ -9,8 +9,7 @@ This is only for testing purpose. There is no warranty on the security.
 This repo produces `canokey-qemu.h` and `libcanokey-qemu.so`
 
 ```bash
-git clone https://github.com/canokeys/canokey-qemu
-git submodule update --init --recursive
+git clone --recursive https://github.com/canokeys/canokey-qemu
 cd canokey-qemu
 mkdir build; cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=${YOUR_PREFIX}
