@@ -18,8 +18,8 @@ add_subdirectory(canokey-core EXCLUDE_FROM_ALL)
 
 set(LIBCANOKEY_QEMU_SO_VERSION 0)
 set(LIBCANOKEY_QEMU_PREFIX ${CMAKE_INSTALL_PREFIX})
-set(LIBCANOKEY_QEMU_LIBDIR ${CMAKE_INSTALL_FULL_LIBDIR})
-set(LIBCANOKEY_QEMU_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+set(LIBCANOKEY_QEMU_LIBDIR ${CMAKE_INSTALL_LIBDIR})
+set(LIBCANOKEY_QEMU_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR})
 
 set(QEMU_VIRT_SRCS
     canokey-core/virt-card/device-sim.c
@@ -54,11 +54,11 @@ if(APPLE)
         ${CMAKE_BINARY_DIR}/canokey-core/canokey-crypto/libcanokey-crypto.a
         ${CMAKE_BINARY_DIR}/canokey-core/canokey-crypto/tf-psa-crypto/core/libtfpsacrypto.a
         ${CMAKE_BINARY_DIR}/canokey-core/libcanokey-core.a
-        DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}
     )
 else()
     configure_file(canokey-qemu.pc.in canokey-qemu.pc @ONLY)
 endif()
 install(FILES ${CMAKE_BINARY_DIR}/canokey-qemu.pc
-    DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )

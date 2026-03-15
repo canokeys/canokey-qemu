@@ -26,7 +26,7 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           brew install cmake ninja
-          pip3 install jsonschema --break-system-packages
+          pip3 install jsonschema jinja2 --break-system-packages
 
       - name: Configure
         run: cmake -S . -B build -G Ninja
