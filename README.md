@@ -1,5 +1,7 @@
 # CanoKey QEMU
 
+[![Build](https://github.com/canokeys/canokey-qemu/actions/workflows/build.yml/badge.svg)](https://github.com/canokeys/canokey-qemu/actions/workflows/build.yml)
+
 This repo can be used by [QEMU](https://github.com/canokeys/qemu) to provide a virtual CanoKey to the guest OS.
 
 This is only for testing purpose. There is no warranty on the security.
