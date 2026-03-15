@@ -81,7 +81,7 @@ void usb_resources_alloc(void) {
 }
 
 void canokey_emu_device_loop() {
-  device_loop(0);
+  device_loop();
 }
 
 int canokey_emu_init(void *state, const char* canokey_file) {
