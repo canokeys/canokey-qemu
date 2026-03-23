@@ -10,6 +10,7 @@ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -fno-omit-frame-pointer")
 option(QEMU_DEBUG_OUTPUT "Control ENABLE_DEBUG_OUTPUT in core" OFF)
 
 set(VIRTCARD ON CACHE BOOL "Enable VIRTCARD in core" FORCE)
+set(ENABLE_DUMB_DONGLE ON CACHE BOOL "Skip user-presence tests in core" FORCE)
 if(NOT QEMU_DEBUG_OUTPUT)
     set(ENABLE_DEBUG_OUTPUT OFF CACHE BOOL "Disable ENABLE_DEBUG_OUTPUT in core" FORCE)
 endif()
