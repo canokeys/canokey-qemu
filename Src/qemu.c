@@ -26,6 +26,7 @@ static void* canokey_emu_state;
 
 // mock device functions
 USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev) { return USBD_OK; }
+void USBD_LL_Init_Done(void) {}
 USBD_StatusTypeDef USBD_LL_DeInit(USBD_HandleTypeDef *pdev) { return USBD_OK; }
 USBD_StatusTypeDef USBD_LL_Start(USBD_HandleTypeDef *pdev) {
   USBD_LL_SetSpeed(&usb_device, USBD_SPEED_FULL);
